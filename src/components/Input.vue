@@ -40,6 +40,7 @@ export default {
         border: 0;
         border-bottom: 2px solid black;
         transition: box-shadow 0.2s;
+        outline: none;
         &:focus{
             box-shadow: 0 20px 10px -12px rgba(119, 119, 119, 0.829);
             // outline: none;
@@ -56,6 +57,7 @@ export default {
             border: 0;
             background-color: white;
             font-size: 30px;
+            outline: none;
         }
     }
     .inputUp{

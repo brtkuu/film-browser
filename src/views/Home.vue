@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 import axios from 'axios';
 import Input from '../components/Input.vue';
 import Cinema from '../components/Cinema.vue';
@@ -35,11 +36,19 @@ export default {
   },
   methods: {
     async handleSearch(searchValue) {
-      this.loading = true;
-      this.step = 1;
-      await axios.get(`${api}&query=${searchValue}`).then((response) => { this.results = response.data.results; });
-      this.loading = false;
-      console.log(this.results);
+      if (searchValue !== '') {
+        this.loading = true;
+        this.step = 1;
+        console.log(searchValue);
+        await axios.get(`${api}&query=${searchValue}`).then((response) => { this.results = response.data.results; });
+        this.loading = false;
+      } else {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Warning!',
+          text: 'No argument',
+        });
+      }
     },
   },
 
