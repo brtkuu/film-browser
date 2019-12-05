@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" v-if="item.poster_path !== null">
+    <div class="wrapper" v-if="item.poster_path !== null" v-on:click="dispMoreInfo">
         <div class="item_image">
         <img :src="photo" alt="">
         </div>
@@ -21,10 +21,16 @@ export default {
   mounted() {
     this.photo = `https://image.tmdb.org/t/p/w185/${this.item.poster_path}`;
   },
+  methods: {
+    dispMoreInfo() {
+      this.$emit('showInfo');
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 .wrapper{
+  cursor: pointer;
     display: flex;
     align-items: center;
     flex-wrap: wrap;

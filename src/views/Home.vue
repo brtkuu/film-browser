@@ -6,7 +6,8 @@
     <Input @searchClick="handleSearch" :step='step'/>
     <Loading v-if="loading" />
     <div class="itemWrapper">
-    <Info v-for="item in results" :key="item.id" :item="item"/>
+    <Info v-for="item in results" :key="item.id" :item="item" @showInfo="dispInfo(item)"/>
+    <Modal v-if="info" :modalInfo="modalInfo" @closeButton="closeInfo"/>
     </div>
   </div>
 </template>
@@ -18,13 +19,14 @@ import Input from '../components/Input.vue';
 import Cinema from '../components/Cinema.vue';
 import Info from '../components/Info.vue';
 import Loading from '../components/Loading.vue';
+import Modal from '../components/Modal.vue';
 
 const api = 'https://api.themoviedb.org/3/search/movie?api_key=0380482adf86754e90be0cfcf0a2ed1b';
 
 export default {
   name: 'home',
   components: {
-    Input, Cinema, Info, Loading,
+    Input, Cinema, Info, Loading, Modal,
   },
   data() {
     return {
@@ -32,6 +34,8 @@ export default {
       step: 0,
       results: [],
       loading: false,
+      info: false,
+      modalInfo: null,
     };
   },
   methods: {
@@ -41,6 +45,7 @@ export default {
         this.step = 1;
         console.log(searchValue);
         await axios.get(`${api}&query=${searchValue}`).then((response) => { this.results = response.data.results; });
+        this.results.sort((a, b) => ((a.vote_average > b.vote_average) ? -1 : 1));
         this.loading = false;
       } else {
         Swal.fire({
@@ -49,6 +54,15 @@ export default {
           text: 'No argument',
         });
       }
+    },
+    dispInfo(item) {
+      this.modalInfo = item;
+      console.log(item);
+      this.info = true;
+    },
+    closeInfo() {
+      this.modalInfo = null;
+      this.info = false;
     },
   },
 
