@@ -24,6 +24,9 @@ export default {
         border: 2px solid black;
         background: white;
         padding: 10px;
+        @media (max-width: 600px){
+            width: 70%;
+        }
     }
     .closeButton{
         cursor: pointer;
@@ -33,6 +36,10 @@ export default {
         width: 30px;
         border-bottom: 4px solid black;
         transform:rotate(45deg);
+        @media (max-width: 600px){
+            width: 20px;
+            left: 90%;
+        }
         &:before{
         content: '';
         position: absolute;
@@ -42,18 +49,31 @@ export default {
         // margin-top: 10px;
         transform:rotate(90deg);
         // top: 5px;
+        @media (max-width: 600px){
+            width: 20px;
         }
+        }
+
     }
     .modalTitle{
         margin-top: 5%;
         font-size: 50px;
+        @media (max-width: 600px){
+            font-size: 29px;
+        }
     }
     .modalOverwiew{
         font-size: 19px;
+        @media (max-width: 600px){
+            font-size: 17px;
+        }
     }
     .modalRating{
         font-weight: 900;
         font-size: 20px;
         margin: 30px 0;
+        @media (max-width: 600px){
+            font-size: 14px;
+        }
     }
 </style>

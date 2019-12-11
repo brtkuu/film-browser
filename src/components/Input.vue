@@ -31,6 +31,9 @@ export default {
         display: flex;
         flex-wrap: wrap;
         margin: 10% 0 0 0;
+        @media (max-width: 950px) {
+        margin-top: 50%;
+    }
     }
     .input{
         background: none;
@@ -45,17 +48,26 @@ export default {
             box-shadow: 0 20px 10px -12px rgba(119, 119, 119, 0.829);
             // outline: none;
             // box-shadow: 0 12px 9px -10px black;
+        @media (max-width: 600px) {
+            box-shadow: 0 20px 10px -12px rgba(255, 255, 255, 0.829);
+        }
         }
         &__title{
         font-size: 100px;
         flex-basis: 100%;
+        @media (max-width: 950px) {
+        font-size: 70px;
+        }
+        @media (max-width: 600px) {
+        color: white;
+        }
         }
         &__button{
             cursor: pointer;
             margin: 30px 0 0 10px;
             padding: 5px 5px 15px 5px;
             border: 0;
-            background-color: white;
+            background-color: rgba(0,0,0,0);
             font-size: 30px;
             outline: none;
         }

@@ -38,6 +38,9 @@ export default {
     border-top: 1px solid black;
     margin: 10px 0;
     justify-content: center;
+    @media (max-width: 600px){
+          justify-content: space-evenly;
+        }
 }
 .item{
     &_image{
@@ -48,9 +51,16 @@ export default {
         font-size: 50px;
         text-align: left;
         flex-basis: 50%;
+        @media (max-width: 600px){
+          font-size: 20px;
+          text-align: center;
+        }
     }
     &_date{
         font-size: 20px;
+        @media (max-width: 600px){
+          font-size: 10px;
+        }
     }
 }
 </style>

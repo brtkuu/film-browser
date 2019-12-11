@@ -19,5 +19,8 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    @media (max-width: 600px) {
+    background-image: url('../assets/smallbcg.jpg');
+    }
 }
 </style>
