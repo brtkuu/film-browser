@@ -1,29 +1,21 @@
-# film-browser
+# Simple film browser created with Vue.js
 
-## Project setup
-```
-yarn install
-```
+## Run project
 
-### Compiles and hot-reloads for development
+### 1.
+
 ```
-yarn serve
+    npm install
 ```
 
-### Compiles and minifies for production
+### 2.
+
 ```
-yarn build
+    npm run build
 ```
 
-### Run your unit tests
-```
-yarn test:unit
-```
+### 3.
 
-### Lints and fixes files
 ```
-yarn lint
+    npm run serve
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

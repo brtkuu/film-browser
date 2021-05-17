@@ -43,7 +43,6 @@ export default {
       if (searchValue !== '') {
         this.loading = true;
         this.step = 1;
-        console.log(searchValue);
         await axios.get(`${api}&query=${searchValue}`).then((response) => { this.results = response.data.results; });
         this.results.sort((a, b) => ((a.vote_average > b.vote_average) ? -1 : 1));
         this.loading = false;
@@ -57,7 +56,6 @@ export default {
     },
     dispInfo(item) {
       this.modalInfo = item;
-      console.log(item);
       this.info = true;
     },
     closeInfo() {
