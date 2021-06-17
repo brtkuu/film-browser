@@ -1,15 +1,32 @@
 <template>
-<div class="modalWrapper">
-    <h1 class="modalTitle"> {{ modalInfo.title }} </h1>
-    <p class="modalOverwiew"> {{ modalInfo.overview }}</p>
-    <p class="modalRating"> Rating: {{ modalInfo.vote_average }}
-    <div class="closeButton" v-on:click="$emit('closeButton')"></div>
-</div>
+    <div class="modalWrapper">
+        <loading v-show="!imdb" />
+        <div v-show="imdb">
+        <h1 class="modalTitle"> {{ modalInfo.title }} </h1>
+        <p class="modalOverwiew"> {{ modalInfo.overview }}</p>
+        <p class="modalRating"> Rating: {{ modalInfo.vote_average }}
+        <p><a :href="imdb">IMDB link</a></p>
+        </div>
+        <div class="closeButton" v-on:click="$emit('closeButton')"></div>
+    </div>
 </template>
 <script>
+import axios from 'axios';
+import Loading from './Loading.vue';
+
 export default {
+  components: { Loading },
   name: 'Modal',
   props: ['modalInfo'],
+  data() {
+    return {
+      imdb: undefined,
+    };
+  },
+  async mounted() {
+    const data = await axios.get(`https://api.themoviedb.org/3/movie/${this.modalInfo.id}/external_ids?api_key=0380482adf86754e90be0cfcf0a2ed1b`);
+    this.imdb = `https://www.imdb.com/title/${data.data.imdb_id}`;
+  },
 };
 </script>
 <style lang="scss" scoped>

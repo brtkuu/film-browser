@@ -1,11 +1,19 @@
 <template>
+  <div>
     <div :class="[{inputUp: step === 1},'inputWrapper']">
-        <h1 v-if="step === 0" class="input__title">Film Browser</h1>
+        <h1 v-show="step === 0" class="input__title">Film Browser</h1>
         <input type="text" class="input"
         v-model="value"
          />
          <button class="input__button" v-on:click="handleClick">🔎</button>
+         <select v-show="step === 1" id="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="vw">VW</option>
+          <option value="audi" selected>Audi</option>
+        </select>
     </div>
+  </div>
 </template>
 <script>
 export default {

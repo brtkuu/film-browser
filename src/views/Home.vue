@@ -44,7 +44,7 @@ export default {
         this.loading = true;
         this.step = 1;
         await axios.get(`${api}&query=${searchValue}`).then((response) => { this.results = response.data.results; });
-        this.results.sort((a, b) => ((a.vote_average > b.vote_average) ? -1 : 1));
+        this.results.sort((a, b) => ((a.title < b.title) ? -1 : 1));
         this.loading = false;
       } else {
         Swal.fire({
