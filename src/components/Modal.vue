@@ -1,11 +1,12 @@
 <template>
     <div class="modalWrapper">
-        <loading v-show="!imdb && !genre" />
-        <div v-show="imdb && genre">
+        <loading v-show="!imdb && !genre && !production_countries" />
+        <div v-show="imdb && genre && production_countries">
         <h1 class="modalTitle"> {{ modalInfo.title }} </h1>
         <p class="modalOverwiew"> {{ modalInfo.overview }}</p>
         <p class="modalRating"> Rating: {{ modalInfo.vote_average }}</p>
         <p> Genre: {{this.genre}} </p>
+        <p> Production countries: {{this.production_countries}} </p>
         <p><a :href="imdb">IMDB link</a></p>
         </div>
         <div class="closeButton" v-on:click="$emit('closeButton')"></div>
@@ -23,6 +24,7 @@ export default {
     return {
       imdb: undefined,
       genre: undefined,
+      production_countries: undefined,
     };
   },
   async mounted() {
@@ -30,6 +32,7 @@ export default {
     this.imdb = `https://www.imdb.com/title/${ids.data.imdb_id}`;
     const details = await axios.get(`https://api.themoviedb.org/3/movie/${this.modalInfo.id}?api_key=0380482adf86754e90be0cfcf0a2ed1b&language=en-US`);
     this.genre = (details.data.genres.map(e => e.name).join(', ')).toLowerCase();
+    this.production_countries = (details.data.production_countries.map(e => e.name).join(', '));
   },
 };
 </script>
