@@ -33,6 +33,7 @@ export default {
   cursor: pointer;
     display: flex;
     align-items: center;
+    max-width: 1200px;
     flex-wrap: wrap;
     border-bottom: 1px solid black;
     border-top: 1px solid black;
@@ -48,7 +49,7 @@ export default {
         flex-basis: 45%;
     }
     &_title{
-        font-size: 50px;
+        font-size: 42px;
         text-align: left;
         flex-basis: 50%;
         @media (max-width: 600px){

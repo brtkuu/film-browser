@@ -4,8 +4,11 @@
         <h1 v-show="step === 0" class="input__title">Film Browser</h1>
         <input type="text" class="input"
         v-model="value"
+        v-on:keyup.enter="handleClick"
          />
-         <button class="input__button" v-on:click="handleClick">🔎</button>
+         <button class="input__button" v-on:click="handleClick">
+           🔎
+         </button>
          <select v-show="step === 1" id="cars">
           <option value="volvo">Volvo</option>
           <option value="saab">Saab</option>
@@ -34,6 +37,7 @@ export default {
 <style lang="scss" scoped>
     .inputWrapper{
         flex-basis: 100%;
+        width: 100vw;
         align-items: center;
         justify-content: center;
         display: flex;

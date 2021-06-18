@@ -4,9 +4,9 @@
         <div v-show="imdb && genre && production_countries">
         <h1 class="modalTitle"> {{ modalInfo.title }} </h1>
         <p class="modalOverwiew"> {{ modalInfo.overview }}</p>
+        <p class="modalOverwiew"> <b>Genre:</b> {{this.genre}} </p>
+        <p class="modalOverwiew"> <b>Production countries:</b> {{this.production_countries}} </p>
         <p class="modalRating"> Rating: {{ modalInfo.vote_average }}</p>
-        <p> Genre: {{this.genre}} </p>
-        <p> Production countries: {{this.production_countries}} </p>
         <p><a :href="imdb">IMDB link</a></p>
         </div>
         <div class="closeButton" v-on:click="$emit('closeButton')"></div>
@@ -88,6 +88,7 @@ export default {
     }
     .modalOverwiew{
         font-size: 19px;
+        padding: 4px;
         @media (max-width: 600px){
             font-size: 17px;
         }
