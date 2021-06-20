@@ -9,11 +9,9 @@
          <button class="input__button" v-on:click="handleClick">
            🔎
          </button>
-         <select v-show="step === 1" id="cars">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="vw">VW</option>
-          <option value="audi" selected>Audi</option>
+        <select class="input__select" @change="handleChange($event)"  v-show="step === 1">
+          <option value="title" selected>Sort by name</option>
+          <option value="popularity">Sort by popularity</option>
         </select>
     </div>
   </div>
@@ -25,11 +23,16 @@ export default {
   data() {
     return {
       value: '',
+      filter: '',
     };
   },
   methods: {
     handleClick() {
-      this.$emit('searchClick', this.value);
+      this.$emit('searchClick', { searchValue: this.value, filter: this.filter });
+    },
+    handleChange(event) {
+      this.filter = event.target.value;
+      this.$emit('searchClick', { searchValue: this.value, filter: this.filter });
     },
   },
 };
@@ -56,6 +59,13 @@ export default {
         border-bottom: 2px solid black;
         transition: box-shadow 0.2s;
         outline: none;
+        &__select{
+          font-size: 24px;
+          margin: 5px;
+          background: none;
+          border: none;
+          border-bottom: 2px solid;
+        }
         &:focus{
             box-shadow: 0 20px 10px -12px rgba(119, 119, 119, 0.829);
             // outline: none;
@@ -82,6 +92,9 @@ export default {
             background-color: rgba(0,0,0,0);
             font-size: 30px;
             outline: none;
+          @media (max-width: 600px) {
+            display: none;
+          }
         }
     }
     .inputUp{

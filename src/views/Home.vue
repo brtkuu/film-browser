@@ -39,12 +39,17 @@ export default {
     };
   },
   methods: {
-    async handleSearch(searchValue) {
-      if (searchValue !== '') {
+    async handleSearch(searchData) {
+      if (searchData.searchValue !== '') {
+        console.log(searchData.filter);
         this.loading = true;
         this.step = 1;
-        await axios.get(`${api}&query=${searchValue}`).then((response) => { this.results = response.data.results; });
-        this.results.sort((a, b) => ((a.title < b.title) ? -1 : 1));
+        await axios.get(`${api}&query=${searchData.searchValue}`).then((response) => { this.results = response.data.results; });
+        if (searchData.filter === 'popularity') {
+          this.results.sort((a, b) => ((a.popularity < b.populatiry) ? -1 : 1));
+        } else {
+          this.results.sort((a, b) => ((a.title < b.title) ? -1 : 1));
+        }
         this.loading = false;
       } else {
         Swal.fire({
