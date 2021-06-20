@@ -1,21 +1,27 @@
-# Simple film browser created with Vue.js
+# Film browser using TheMovieDB
 
-## Run project
+Application to browsing films, app is using [TheMovieDB API](https://developers.themoviedb.org/).
 
-### 1.
+### Technologies
+
+-   [Vue](https://vuejs.org/)
+-   [Axios](https://www.npmjs.com/package/axios)
+-   [sweetalert2](https://sweetalert2.github.io/)
+
+### Run project
+
+Clone repo and run commands:
 
 ```
     npm install
 ```
 
-### 2.
+and:
 
 ```
-    npm run build
+   npm run serve
 ```
 
-### 3.
+### Using
 
-```
-    npm run serve
-```
+Type film name or phrase to find film are you intrested of. You can also sort films by name (default) or by popularity by select option from drop down list.
